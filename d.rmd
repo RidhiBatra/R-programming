@@ -1,0 +1,24 @@
+---
+title: "My First Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+  orientation: rows
+vertical_layout: fill
+---
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(ggplot2)
+library(dplyr)
+library(plotly)
+
+
+```  
+Column {data-width=650}
+### (Box Plot)IRIS
+
+```{r}
+ggplotly(ggplot(iris)+aes(x=Species,y=Sepal.Length)+
+  geom_boxplot()+theme_classic())
+
+```
+
