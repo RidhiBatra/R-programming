@@ -1,0 +1,45 @@
+---
+title: "IRIS Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: fill
+    bootswatch: minty
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+d1=read.csv(file.choose())
+head(d1) 
+library(ggplot2)
+library(dplyr)
+library(plotly)
+summary(d1)
+str(d1)
+```
+
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### (Box Plot)IRIS
+
+```{r}
+ggplotly(ggplot(iris)+aes(x=Species,y=Sepal.Length)+geom_boxplot()+theme_classic())
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Histogram
+
+```{r}
+hist(d1$sepal.length, col="pink")
+```
+
+### Pie chart
+
+```{r}
+pie(d1$petal.width)
+```
+
