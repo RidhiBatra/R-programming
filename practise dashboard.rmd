@@ -1,0 +1,56 @@
+---
+title: "House Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: fill
+---
+## Column {.tabset}
+```{r setup, include=FALSE}
+library(flexdashboard)
+d2=read.csv(file.choose())
+head(d2) 
+library(ggplot2)
+library(dplyr)
+library(plotly)
+summary(d2)
+str(d2)
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### boxplot
+
+```{r}
+ggplotly(ggplot(d2)+aes(x=price,y=age)+geom_boxplot()+theme_classic())
+```
+
+### Histogram
+
+```{r}
+hist(d2$price, col="pink")
+```
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart C
+
+```{r}
+
+```
+
+Column {data-width=350}
+----------------------------------------------------------------------
+
+### Pie chart
+```{r}
+pie(d2$lot_size)
+```
+
+### Barplot
+```{r}
+barplot(d2$bathrooms,fill=d2$lot_size)
+```
+
+
