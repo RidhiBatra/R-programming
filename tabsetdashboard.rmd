@@ -1,0 +1,42 @@
+---
+title: "Tabset Example"
+output:
+flexdashboard::flex_dashboard:
+orientation: row
+vertical_layout: fill
+---
+
+## Column {.tabset}
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+d2=read.csv(file.choose())
+head(d2) 
+library(ggplot2)
+library(dplyr)
+library(plotly)
+summary(d2)
+str(d2)
+```
+### Chart1
+
+```{r}
+plot(d2$lot_size)
+```
+
+### Chart2
+
+```{r}
+library(ggplot2)
+barplot(d2$bathrooms)
+```
+
+
+### Chart3
+
+```{r}
+hist(d2$price, col="pink")
+```
+
+
+
